@@ -1,0 +1,42 @@
+# Map escape to C-\ to avoid overriding C-a
+escape ^\\
+
+# Support alternate screens so that, for example, when you 
+# quit out of vi, the display is redrawn as it was before vi
+# redrew the full screen.
+altscreen on
+
+# 256 color terminal
+term screen-256color
+
+# Allow bold colors
+attrcolor b ".I"
+
+# Tell screen how to set colors. ab = background, af=foreground
+termcapinfo xterm 'co#256:ab=\e[48;5;%dm:af=\e[38;5;%dm'
+
+# Erase background color
+defbce "on"
+
+# No startup message
+startup_message off
+
+# No seizure-inducing visual bell
+vbell off
+
+# Attempt to bind Ctrl left/right to move between screens. Failed, for some
+# reason that I'm not able to fathom, but I'm leaving it here as a reminder to 
+# try to get it working at some point.
+#bindkey "^[Od" prev  # ctrl-left
+#bindkey "^[Oc" next  # ctrl-right
+
+# Bind <F11> <F12> to prev and next respectively
+bindkey -k F1 prev
+bindkey -k F2 next
+
+# Tabs left, hostname right
+hardstatus alwayslastline "%{= 0w} %-Lw%{=r} %n%f %t %{-}%+Lw %=%H"
+
+# History
+defscrollback 30000
+
